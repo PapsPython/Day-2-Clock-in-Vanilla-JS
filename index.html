@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>Clock In Vanilla JS</title>
+  <link href="style.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+  <main class="clockface">
+    <section>
+      <div id="secondhand"> </div>
+      <div id="minutehand"> </div>
+      <div id="hourhand"> </div>
+    </section>
+  </main>
+
+  <article class="bigborder">
+
+    <div id="hourface"> </div>
+    <div id="minuteface"> </div>
+    <div id="secondface"> </div>
+    <div id="am-pm"> </div>
+
+  </article>
+
+
+  <script>
+    const hourHand = document.getElementById("hourhand")
+    const minuteHand = document.getElementById("minutehand")
+    const secondHand = document.getElementById("secondhand")
+    const minuteFace = document.getElementById("minuteface")
+    const hourFace = document.getElementById("hourface")
+    const secondFace = document.getElementById("secondface")
+    const amPm = document.getElementById("am-pm")
+
+    function setDate() {
+      const now = new Date();
+
+      const seconds = now.getSeconds()
+      secondFace.textContent = (seconds < 10) ?`0${seconds}` : `${seconds}`
+      const secondDegrees = ((seconds / 60) * 360)
+      secondHand.style.transform = `rotate(${secondDegrees}deg)`
+
+
+      const minutes = now.getMinutes()
+      minuteFace.textContent = (minutes < 10) ?`0${minutes}` : `${minutes}`
+      const minutestodegrees = (minutes / 60) * 360
+      minuteHand.style.transform = `rotate(${minutestodegrees}deg)`
+
+      
+      const hour = now.getHours()
+      const hourtodegrees = ((hour / 12) * 360) + 90
+      hourFace.textContent = (hour < 10) ?`0${hour}` : `${hour}`
+      hourHand.style.transform = `rotate(${hourtodegrees}deg)`
+      amPm.textContent = (hour <= 11) ? `AM` : `PM`
+      
+      }
+
+    setInterval(setDate, 1000)
+
+
+
+
+  </script>
+
+  <!--
+  This script places a badge on your repl's full-browser view back to your repl's cover
+  page. Try various colors for the theme: dark, light, red, orange, yellow, lime, green,
+  teal, blue, blurple, magenta, pink!
+  -->
+
+</html>

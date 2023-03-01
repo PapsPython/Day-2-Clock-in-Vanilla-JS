@@ -1,0 +1,84 @@
+html {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+body{
+ display: flex;
+  justify-content: center;
+  align-items: center;
+  gap:100px;
+}
+
+*,*::before,*::after{
+  box-sizing: border-box;
+}
+
+.clockface{
+  width:300px;
+  aspect-ratio: 1/1;
+  border:10px solid black; 
+  border-radius: 50%;
+  position: relative;
+}
+
+#hourhand,#minutehand,#secondhand{
+  left:50%;
+  position: absolute;
+  margin-top: 10px;
+  border-radius: 20px;
+  transform-origin:bottom;
+  transition-timing-function:cubic-bezier(0.55, 0.055, 0.675, 0.19);
+  transition:all 0.05s;  
+}
+
+#hourhand{
+  border: 2px solid red;
+  width:100px;
+  z-index:0 ;
+  left:16%;
+  bottom: 50%;
+  transform-origin: 100%;
+  transform: rotate(90deg);
+}
+
+#minutehand{
+   border: 2px solid blue;
+  height:120px;
+  z-index: 1;
+  bottom: 50%;
+}
+
+#secondhand{
+  border: 2px solid purple;
+  height:130px;
+  z-index: 4;
+  bottom: 50%;
+} 
+
+.bigborder{
+  border: 5px solid black;
+  max-width: 800px;
+  height:auto;
+  display: flex;
+  flex-basis: 25%;
+  padding: 20px;
+  justify-content: space-evenly;
+  gap:5px;
+}
+
+ #secondface,#minuteface,#hourface,#am-pm {
+    border:3px solid black;
+    width:auto;
+    height:auto;
+    padding:5px;
+ } 
+
+@media screen and ( width < 700px) {
+  body{
+    display: flex;
+    flex-direction: column;
+  }
+}
